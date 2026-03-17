@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolución Histórica de la Pedagogía – DED310</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #0f1f3d 0%, #1a3a6b 50%, #0d2d5e 100%);
+    min-height: 100vh;
+    color: #fff;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 3px solid #4a90d9;
+  }
+  .header .subtitle-tag {
+    display: inline-block;
+    background: #4a90d9;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: clamp(22px, 4vw, 42px);
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .header h2 {
+    font-size: clamp(14px, 2vw, 18px);
+    color: #a0c4f0;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+  .course-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #7fb3e0;
+  }
+  .course-info span {
+    background: rgba(255,255,255,0.08);
+    padding: 4px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  /* MAIN LAYOUT */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* FILTER TABS */
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .filter-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.05);
+    color: #a0c4f0;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.25s;
+    font-family: inherit;
+  }
+  .filter-btn:hover { background: rgba(74,144,217,0.3); border-color: #4a90d9; color: #fff; }
+  .filter-btn.active { background: #4a90d9; border-color: #4a90d9; color: #fff; }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding: 0 0 0 60px;
+  }
+  /* Central line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #4a90d9, #7fb3e0, #4a90d9);
+    border-radius: 2px;
+  }
+
+  /* CARD */
+  .event {
+    position: relative;
+    margin-bottom: 28px;
+    opacity: 0;
+    transform: translateX(30px);
+    animation: fadeIn 0.5s forwards;
+  }
+  .event:nth-child(1) { animation-delay: 0.05s; }
+  .event:nth-child(2) { animation-delay: 0.1s; }
+  .event:nth-child(3) { animation-delay: 0.15s; }
+  .event:nth-child(4) { animation-delay: 0.2s; }
+  .event:nth-child(5) { animation-delay: 0.25s; }
+  .event:nth-child(6) { animation-delay: 0.3s; }
+  .event:nth-child(7) { animation-delay: 0.35s; }
+  .event:nth-child(8) { animation-delay: 0.4s; }
+  .event:nth-child(9) { animation-delay: 0.45s; }
+  .event:nth-child(10) { animation-delay: 0.5s; }
+  .event:nth-child(n+11) { animation-delay: 0.55s; }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Dot on line */
+  .event-dot {
+    position: absolute;
+    left: -47px;
+    top: 22px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 3px solid;
+    background: #0f1f3d;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px;
+    font-weight: 800;
+    z-index: 2;
+    transition: transform 0.2s;
+  }
+  .event:hover .event-dot { transform: scale(1.3); }
+
+  .event-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 4px solid;
+    border-radius: 0 12px 12px 0;
+    padding: 18px 22px;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .event-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .event-card:hover { background: rgba(255,255,255,0.1); transform: translateX(4px); }
+  .event-card:hover::before { opacity: 1; }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .period-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .card-title-block { flex: 1; min-width: 0; }
+  .figure-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+  .year-text {
+    font-size: 12px;
+    color: #7fb3e0;
+    font-weight: 500;
+  }
+  .era-label {
+    font-size: 11px;
+    color: #9ab8d4;
+    margin-left: auto;
+    font-style: italic;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .card-body { font-size: 13.5px; color: #bdd5eb; line-height: 1.6; }
+  .card-body.hidden { display: none; }
+  .expand-hint {
+    font-size: 11px;
+    color: #5a8fbf;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .expand-hint::after { content: '▾'; font-size: 14px; }
+  .event-card.expanded .expand-hint::after { content: '▴'; }
+
+  .contribution-detail {
+    display: none;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .contribution-detail.visible { display: block; }
+
+  .detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #5a8fbf;
+    margin-bottom: 6px;
+  }
+  .detail-text { font-size: 13px; color: #cce0f5; line-height: 1.65; }
+
+  .tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;
+  }
+  .tag {
+    font-size: 10px;
+    padding: 3px 9px;
+    border-radius: 10px;
+    background: rgba(74,144,217,0.2);
+    border: 1px solid rgba(74,144,217,0.35);
+    color: #8bbde0;
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 12px; color: #8bbde0;
+  }
+  .legend-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2.5px solid;
+    flex-shrink: 0;
+  }
+
+  /* COLORS by era */
+  .era-prehistory .event-dot { border-color: #8bc34a; color: #8bc34a; }
+  .era-prehistory .event-card { border-left-color: #8bc34a; }
+  .era-prehistory .period-badge { background: rgba(139,195,74,0.18); color: #8bc34a; }
+
+  .era-ancient .event-dot { border-color: #ff9800; color: #ff9800; }
+  .era-ancient .event-card { border-left-color: #ff9800; }
+  .era-ancient .period-badge { background: rgba(255,152,0,0.18); color: #ff9800; }
+
+  .era-greek .event-dot { border-color: #f5c518; color: #f5c518; }
+  .era-greek .event-card { border-left-color: #f5c518; }
+  .era-greek .period-badge { background: rgba(245,197,24,0.18); color: #f5c518; }
+
+  .era-medieval .event-dot { border-color: #ab47bc; color: #ab47bc; }
+  .era-medieval .event-card { border-left-color: #ab47bc; }
+  .era-medieval .period-badge { background: rgba(171,71,188,0.18); color: #ab47bc; }
+
+  .era-renaissance .event-dot { border-color: #ef5350; color: #ef5350; }
+  .era-renaissance .event-card { border-left-color: #ef5350; }
+  .era-renaissance .period-badge { background: rgba(239,83,80,0.18); color: #ef5350; }
+
+  .era-modern .event-dot { border-color: #26c6da; color: #26c6da; }
+  .era-modern .event-card { border-left-color: #26c6da; }
+  .era-modern .period-badge { background: rgba(38,198,218,0.18); color: #26c6da; }
+
+  .era-enlightenment .event-dot { border-color: #4db6ac; color: #4db6ac; }
+  .era-enlightenment .event-card { border-left-color: #4db6ac; }
+  .era-enlightenment .period-badge { background: rgba(77,182,172,0.18); color: #4db6ac; }
+
+  .era-19c .event-dot { border-color: #ff7043; color: #ff7043; }
+  .era-19c .event-card { border-left-color: #ff7043; }
+  .era-19c .period-badge { background: rgba(255,112,67,0.18); color: #ff7043; }
+
+  .era-20c .event-dot { border-color: #4a90d9; color: #4a90d9; }
+  .era-20c .event-card { border-left-color: #4a90d9; }
+  .era-20c .period-badge { background: rgba(74,144,217,0.18); color: #4a90d9; }
+
+  .era-21c .event-dot { border-color: #66bb6a; color: #66bb6a; }
+  .era-21c .event-card { border-left-color: #66bb6a; }
+  .era-21c .period-badge { background: rgba(102,187,106,0.18); color: #66bb6a; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #5a8fbf;
+    font-size: 12px;
+  }
+
+  /* SCROLL HINT */
+  .scroll-hint {
+    text-align: center;
+    color: #4a90d9;
+    font-size: 12px;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+
+  @media (max-width: 600px) {
+    .timeline { padding-left: 45px; }
+    .timeline::before { left: 16px; }
+    .event-dot { left: -38px; width: 18px; height: 18px; }
+    .card-header { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="subtitle-tag">Recurso Educativo Digital – RED</div>
+  <h1>Evolución Histórica de la Pedagogía</h1>
+  <h2>Principales Hitos y Exponentes en el Desarrollo de las Ciencias Pedagógicas</h2>
+  <div class="course-info">
+    <span>📚 DED310 – Historia de la Pedagogía y Didáctica</span>
+    <span>🎓 Doctorado en Ciencias de la Educación</span>
+    <span>🏛️ University of Technology and Education</span>
+    <span>📅 2026</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="scroll-hint">↕ Haz clic en cada hito para ver más detalles</div>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterEra('all', this)">Todos</button>
+    <button class="filter-btn" onclick="filterEra('era-prehistory', this)">Prehistoria</button>
+    <button class="filter-btn" onclick="filterEra('era-ancient', this)">Antiguo Oriente</button>
+    <button class="filter-btn" onclick="filterEra('era-greek', this)">Grecia Clásica</button>
+    <button class="filter-btn" onclick="filterEra('era-medieval', this)">Edad Media</button>
+    <button class="filter-btn" onclick="filterEra('era-renaissance', this)">Renacimiento</button>
+    <button class="filter-btn" onclick="filterEra('era-modern', this)">Modernidad</button>
+    <button class="filter-btn" onclick="filterEra('era-enlightenment', this)">Ilustración</button>
+    <button class="filter-btn" onclick="filterEra('era-19c', this)">S. XIX</button>
+    <button class="filter-btn" onclick="filterEra('era-20c', this)">S. XX</button>
+    <button class="filter-btn" onclick="filterEra('era-21c', this)">S. XXI</button>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="border-color:#8bc34a"></div>Prehistoria</div>
+    <div class="legend-item"><div class="legend-dot" style="border-color:#ff9800"></div>Antiguo Oriente</div>
+    <div class="legend-item"><div class="legend-dot" style="border-color:#f5c518"></div>Grecia Clásica</div>
+    <div class="legend-item"><div class="legend-dot" style="border-color:#ab47bc"></div>Edad Media</div>
+    <div class="legend-item"><div class="legend-dot" style="border-color:#ef5350"></div>Renacimiento</div>
+    <div class="legend-item"><div class="legend-dot" style="border-color:#26c6da"></div>Modernidad</div>
+    <div class="legend-item"><div class="legend-dot" style="border-color:#4db6ac"></div>Ilustración</div>
+    <div class="legend-item"><div class="legend-dot" style="border-color:#ff7043"></div>S. XIX</div>
+    <div class="legend-item"><div class="legend-dot" style="border-color:#4a90d9"></div>S. XX</div>
+    <div class="legend-item"><div class="legend-dot" style="border-color:#66bb6a"></div>S. XXI</div>
+  </div>
+
+  <!-- TIMELINE EVENTS -->
+  <div class="timeline" id="timeline">
+
+    <!-- 1. Prehistoria -->
+    <div class="event era-prehistory" data-era="era-prehistory">
+      <div class="event-dot">▸</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Prehistoria</span>
+          <div class="card-title-block">
+            <div class="figure-name">Educación en las Comunidades Primitivas</div>
+            <div class="year-text">~40,000 a.C. en adelante</div>
+          </div>
+          <span class="era-label">Origen del proceso educativo</span>
+        </div>
+        <div class="card-body">
+          Transmisión oral e imitación como primeras formas de enseñanza. Del nomadismo al sedentarismo.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">El proceso educativo tiene su origen en las comunidades primitivas, cuando el ser humano transitó del nomadismo al sedentarismo. La educación era de padres a hijos, basada en la imitación, la transmisión oral y la experiencia directa. Los conocimientos sobre caza, recolección y rituales culturales constituían el primer "currículo" de la humanidad. Con la división del trabajo emergen las primeras ideas pedagógicas organizadas.</div>
+          <div class="tags">
+            <span class="tag">Transmisión oral</span>
+            <span class="tag">Imitación</span>
+            <span class="tag">Educación informal</span>
+            <span class="tag">Transmisión intergeneracional</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Confucio -->
+    <div class="event era-ancient" data-era="era-ancient">
+      <div class="event-dot">孔</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Antiguo Oriente</span>
+          <div class="card-title-block">
+            <div class="figure-name">Confucio (551-479 a.C.)</div>
+            <div class="year-text">China Antigua</div>
+          </div>
+          <span class="era-label">Primer gran maestro documentado</span>
+        </div>
+        <div class="card-body">
+          Educación como formación del carácter moral, filosofía, poesía y virtud. Acceso universal al saber.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Confucio es considerado el primer gran maestro documentado de la humanidad. Su método dialogístico buscaba la formación del carácter moral del alumno. Sostuvo que la educación debía estar disponible para todos sin distinción de clase social, principio revolucionario para su época. Sus Analectas (recopilación de sus diálogos) siguen siendo referente educativo en Oriente. La educación de la antigua China se centraba en filosofía, poesía, religión y ética.</div>
+          <div class="tags">
+            <span class="tag">Formación moral</span>
+            <span class="tag">Diálogo pedagógico</span>
+            <span class="tag">Educación universal</span>
+            <span class="tag">Filosofía y ética</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Sócrates -->
+    <div class="event era-greek" data-era="era-greek">
+      <div class="event-dot">Σ</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Grecia Clásica</span>
+          <div class="card-title-block">
+            <div class="figure-name">Sócrates (470-399 a.C.)</div>
+            <div class="year-text">Atenas, Grecia</div>
+          </div>
+          <span class="era-label">La Mayéutica</span>
+        </div>
+        <div class="card-body">
+          Método mayéutico: preguntas poderosas para que el alumno descubra la verdad. Diálogo como base pedagógica.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Sócrates es el punto de partida de la pedagogía occidental. Su método mayéutico —del griego "arte de las parteras"— consistía en guiar al interlocutor mediante preguntas para que descubriera por sí mismo la verdad que ya llevaba en su interior. Su principio "Solo sé que no sé nada" expresa la humildad intelectual como condición del aprendizaje. La ironía, la refutación y el diálogo socrático prefiguran modelos pedagógicos activos y críticos que siguen vigentes.</div>
+          <div class="tags">
+            <span class="tag">Mayéutica</span>
+            <span class="tag">Diálogo socrático</span>
+            <span class="tag">Aprendizaje activo</span>
+            <span class="tag">Cuestionamiento crítico</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Platón -->
+    <div class="event era-greek" data-era="era-greek">
+      <div class="event-dot">Π</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Grecia Clásica</span>
+          <div class="card-title-block">
+            <div class="figure-name">Platón (427-347 a.C.)</div>
+            <div class="year-text">La Academia, Atenas</div>
+          </div>
+          <span class="era-label">Idealismo pedagógico</span>
+        </div>
+        <div class="card-body">
+          Primeras formulaciones teóricas pedagógicas. Dialéctica y educación para la virtud ciudadana.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">En la filosofía de Platón se encuentran las primeras formulaciones teóricas de carácter pedagógico. Su propuesta educativa se basaba en la búsqueda del conocimiento verdadero, el desarrollo del alma, la formación ética y el equilibrio entre cuerpo y mente. La educación platónica permitía transitar de la "realidad sensible" a la "realidad inteligible". La dialéctica —tesis y antítesis— fue su herramienta pedagógica central. Fundó La Academia en 387 a.C., la primera institución de educación superior del mundo occidental.</div>
+          <div class="tags">
+            <span class="tag">Dialéctica</span>
+            <span class="tag">Formación del ciudadano</span>
+            <span class="tag">La Academia</span>
+            <span class="tag">Educación ética</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Aristóteles -->
+    <div class="event era-greek" data-era="era-greek">
+      <div class="event-dot">Α</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Grecia Clásica</span>
+          <div class="card-title-block">
+            <div class="figure-name">Aristóteles (384-322 a.C.)</div>
+            <div class="year-text">El Liceo, Atenas</div>
+          </div>
+          <span class="era-label">Educación como proceso social</span>
+        </div>
+        <div class="card-body">
+          Educación empírica. Cinco etapas educativas. Educación moral e intelectual con igual importancia.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Aristóteles fundamentó el conocimiento en la experiencia y propuso que educación, genética y hábitos determinan la formación humana. Organizó la educación en cinco períodos evolutivos: infancia, hasta 5 años, hasta 7 años, hasta la pubertad (educación pública) y la educación liberal en los Liceos. Dividió la educación en moral e intelectual, con igual importancia. Para él, la educación era un proceso de socialización continuo: "La educación nunca termina".</div>
+          <div class="tags">
+            <span class="tag">Empirismo educativo</span>
+            <span class="tag">Etapas evolutivas</span>
+            <span class="tag">El Liceo</span>
+            <span class="tag">Educación integral</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Edad Media -->
+    <div class="event era-medieval" data-era="era-medieval">
+      <div class="event-dot">✝</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Edad Media</span>
+          <div class="card-title-block">
+            <div class="figure-name">Sto. Tomás de Aquino (1225-1274)</div>
+            <div class="year-text">Europa, Siglos V-XV</div>
+          </div>
+          <span class="era-label">Escolasticismo</span>
+        </div>
+        <div class="card-body">
+          Pedagogía al servicio de la fe. Escolasticismo. Memorización y debate formal en las primeras universidades.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Durante la Edad Media, la pedagogía estuvo subordinada a los fines de la Iglesia. Santo Tomás de Aquino concilió la filosofía aristotélica con la teología cristiana (escolasticismo). El método de las disputationes —debates formales sobre textos sagrados— introdujo elementos dialécticos en la enseñanza universitaria. Las primeras universidades (Bolonia, París, Oxford) surgen en este período como instituciones formales de educación superior.</div>
+          <div class="tags">
+            <span class="tag">Escolasticismo</span>
+            <span class="tag">Primeras universidades</span>
+            <span class="tag">Disputa formal</span>
+            <span class="tag">Fe y razón</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Erasmo -->
+    <div class="event era-renaissance" data-era="era-renaissance">
+      <div class="event-dot">✦</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Renacimiento</span>
+          <div class="card-title-block">
+            <div class="figure-name">Erasmo de Rotterdam (1466-1536)</div>
+            <div class="year-text">Europa, Siglos XIV-XVI</div>
+          </div>
+          <span class="era-label">Humanismo pedagógico</span>
+        </div>
+        <div class="card-body">
+          Pedagogía humanista. El ser humano al centro. Formación integral: mente, cuerpo y virtud cívica.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">El Renacimiento representó una ruptura con la escolástica medieval. Erasmo de Rotterdam y Juan Luis Vives (1493-1540) fundaron la pedagogía humanista, que restituía al ser humano como centro del universo y de la reflexión educativa. Abogaban por una educación más humana, activa y centrada en el estudiante. El humanismo pedagógico enfatizó la formación integral de la persona: intelecto, virtud moral, arte y cuerpo, prefigurando muchos debates pedagógicos modernos.</div>
+          <div class="tags">
+            <span class="tag">Humanismo</span>
+            <span class="tag">Formación integral</span>
+            <span class="tag">Educación activa</span>
+            <span class="tag">Renacimiento</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Comenio -->
+    <div class="event era-modern" data-era="era-modern">
+      <div class="event-dot">✎</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Modernidad</span>
+          <div class="card-title-block">
+            <div class="figure-name">Juan Amós Comenio (1592-1670)</div>
+            <div class="year-text">Didáctica Magna, 1657</div>
+          </div>
+          <span class="era-label">Padre de la Pedagogía Moderna</span>
+        </div>
+        <div class="card-body">
+          Primer sistema educativo universal. "Enseñar todo a todos." Principios didácticos científicos. Nacimiento de la Didáctica.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Comenio es el padre de la pedagogía moderna y de la didáctica como disciplina autónoma. Su Didáctica Magna (1657) propuso un sistema educativo universal y organizado, con el lema "enseñar todo a todos". Estableció principios didácticos que siguen vigentes: de lo general a lo particular, de lo fácil a lo difícil, de lo conocido a lo desconocido, enseñar por todos los sentidos. Propuso ciclos educativos adaptados a las etapas del niño y que todos los maestros siguieran los mismos métodos. Su pansofía aspiraba a un conocimiento universal.</div>
+          <div class="tags">
+            <span class="tag">Didáctica Magna</span>
+            <span class="tag">Sistema educativo universal</span>
+            <span class="tag">Principios didácticos</span>
+            <span class="tag">Pansofía</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Rousseau -->
+    <div class="event era-enlightenment" data-era="era-enlightenment">
+      <div class="event-dot">🌿</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Ilustración</span>
+          <div class="card-title-block">
+            <div class="figure-name">Jean-Jacques Rousseau (1712-1778)</div>
+            <div class="year-text">El Emilio, 1762</div>
+          </div>
+          <span class="era-label">Naturalismo pedagógico</span>
+        </div>
+        <div class="card-body">
+          El niño al centro. Educación negativa. Libertad, naturaleza y paidocentrismo. Precursor de la Escuela Nueva.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Rousseau revolucionó la pedagogía al colocar al niño —no al maestro ni al contenido— en el centro del proceso educativo. En El Emilio (1762) desarrolló los conceptos de paidocentrismo, educación en armonía con la naturaleza y educación negativa (proteger al niño de influencias distorsionadoras). Para Rousseau, el niño nace bueno y es la sociedad quien lo corrompe. Su obra prefiguró el constructivismo, la escuela activa y todos los movimientos pedagógicos centrados en el alumno del siglo XX.</div>
+          <div class="tags">
+            <span class="tag">Paidocentrismo</span>
+            <span class="tag">Educación negativa</span>
+            <span class="tag">Naturalismo</span>
+            <span class="tag">El Emilio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. Pestalozzi -->
+    <div class="event era-enlightenment" data-era="era-enlightenment">
+      <div class="event-dot">♡</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Ilustración – S. XIX</span>
+          <div class="card-title-block">
+            <div class="figure-name">Johann H. Pestalozzi (1746-1827)</div>
+            <div class="year-text">Suiza</div>
+          </div>
+          <span class="era-label">Educación popular</span>
+        </div>
+        <div class="card-body">
+          Intuición pedagógica. Método cabeza-corazón-manos. Artífice de la educación popular moderna.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Pestalozzi llevó las ideas de Rousseau a la práctica, dedicando su vida a la educación de los niños más desfavorecidos. Su método se basaba en la intuición —aprender a través de la percepción directa de los objetos— y en el desarrollo armónico de la cabeza (intelecto), el corazón (valores) y las manos (destrezas prácticas). Su obra "Cómo Gertrudis enseña a sus hijos" marcó un hito en la pedagogía psicológica y social. Es considerado el artífice de la educación popular moderna y precursor de la pedagogía científica.</div>
+          <div class="tags">
+            <span class="tag">Intuición pedagógica</span>
+            <span class="tag">Cabeza-corazón-manos</span>
+            <span class="tag">Educación popular</span>
+            <span class="tag">Pedagogía social</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Fröbel -->
+    <div class="event era-19c" data-era="era-19c">
+      <div class="event-dot">▲</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Siglo XIX</span>
+          <div class="card-title-block">
+            <div class="figure-name">Friedrich Fröbel (1782-1852)</div>
+            <div class="year-text">Primer Kindergarten, 1837</div>
+          </div>
+          <span class="era-label">El juego como método</span>
+        </div>
+        <div class="card-body">
+          Primer jardín de infancia. Juego, libertad y creatividad como fundamentos pedagógicos.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Fröbel fundó el primer Kindergarten ("jardín de niños") en 1837, partiendo de que el juego es la actividad más pura y espiritual del niño. Desarrolló materiales didácticos específicos llamados "dones de Fröbel" (esferas, cubos, cilindros) para estimular el desarrollo de los niños pequeños. Sus principios de libertad, autonomía y creatividad en la búsqueda del desarrollo natural de la persona influyeron profundamente en la educación inicial contemporánea a nivel mundial.</div>
+          <div class="tags">
+            <span class="tag">Kindergarten</span>
+            <span class="tag">Juego pedagógico</span>
+            <span class="tag">Materiales didácticos</span>
+            <span class="tag">Educación inicial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. Herbart -->
+    <div class="event era-19c" data-era="era-19c">
+      <div class="event-dot">⚗</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Siglo XIX</span>
+          <div class="card-title-block">
+            <div class="figure-name">Johann F. Herbart (1776-1841)</div>
+            <div class="year-text">Alemania</div>
+          </div>
+          <span class="era-label">Padre de la Pedagogía Científica</span>
+        </div>
+        <div class="card-body">
+          Pedagogía científica basada en psicología. Cuatro etapas de instrucción. Formación del carácter.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Herbart fue el primero en intentar construir una pedagogía verdaderamente científica, sustentada en la psicología y la ética. Sostenía que toda enseñanza debía servir a la formación del carácter moral del alumno. Propuso cuatro etapas de instrucción: claridad, asociación, sistema y método, que son los antecedentes directos de la planificación didáctica moderna. Es considerado el padre de la pedagogía científica. Su obra "Pedagogía General" (1806) sistematizó la teoría pedagógica como disciplina académica.</div>
+          <div class="tags">
+            <span class="tag">Pedagogía científica</span>
+            <span class="tag">Cuatro etapas didácticas</span>
+            <span class="tag">Formación del carácter</span>
+            <span class="tag">Psicología educativa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. Dewey -->
+    <div class="event era-20c" data-era="era-20c">
+      <div class="event-dot">⚙</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Siglo XX</span>
+          <div class="card-title-block">
+            <div class="figure-name">John Dewey (1859-1952)</div>
+            <div class="year-text">EE.UU.</div>
+          </div>
+          <span class="era-label">Pragmatismo – Learning by doing</span>
+        </div>
+        <div class="card-body">
+          Aprender haciendo. La escuela como comunidad de vida democrática. Pensamiento reflexivo.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Dewey es el padre de la educación progresista. Su filosofía del instrumentalismo sostenía que el conocimiento es válido en la medida en que sirve para resolver problemas reales. Propuso una pedagogía centrada en la experiencia, el pensamiento reflexivo y la vida democrática. Para Dewey, la escuela debía ser una comunidad de vida, no solo de instrucción. Su lema "learning by doing" (aprender haciendo) se convirtió en uno de los principios más influyentes del siglo XX, directamente relacionado con el aprendizaje basado en proyectos contemporáneo.</div>
+          <div class="tags">
+            <span class="tag">Learning by doing</span>
+            <span class="tag">Pragmatismo</span>
+            <span class="tag">Democracia educativa</span>
+            <span class="tag">Experiencia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. Montessori -->
+    <div class="event era-20c" data-era="era-20c">
+      <div class="event-dot">★</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Siglo XX</span>
+          <div class="card-title-block">
+            <div class="figure-name">María Montessori (1870-1952)</div>
+            <div class="year-text">Casa dei Bambini, 1907</div>
+          </div>
+          <span class="era-label">Libertad guiada – Ambiente preparado</span>
+        </div>
+        <div class="card-body">
+          Aprendizaje autónomo en ambiente preparado. Materiales sensoriales. Respeto por el ritmo del niño.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Montessori, primera médica de Italia, fundó la Casa dei Bambini en Roma en 1907, revolucionando la educación infantil. Su método propone un ambiente preparado donde los niños aprenden de forma autónoma con materiales diseñados para estimular los sentidos y la inteligencia. Integra libertad, orden, autodisciplina y respeto por el desarrollo natural del niño. El método Montessori es hoy uno de los más difundidos en el mundo, aplicado en miles de escuelas en más de 100 países.</div>
+          <div class="tags">
+            <span class="tag">Ambiente preparado</span>
+            <span class="tag">Autonomía</span>
+            <span class="tag">Materiales sensoriales</span>
+            <span class="tag">Método Montessori</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. Vygotski -->
+    <div class="event era-20c" data-era="era-20c">
+      <div class="event-dot">↔</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Siglo XX</span>
+          <div class="card-title-block">
+            <div class="figure-name">Lev Vygotski (1896-1934)</div>
+            <div class="year-text">Unión Soviética</div>
+          </div>
+          <span class="era-label">Zona de Desarrollo Próximo</span>
+        </div>
+        <div class="card-body">
+          Aprendizaje social. ZDP: lo que el alumno puede hacer con ayuda. Lenguaje como herramienta del pensamiento.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Vygotski desarrolló una teoría del aprendizaje profundamente social. Su concepto de Zona de Desarrollo Próximo (ZDP) describe la distancia entre lo que un estudiante puede hacer solo y lo que puede hacer con la guía de un adulto o par más capaz. Para Vygotski, el aprendizaje precede al desarrollo y la interacción social es su motor fundamental. Sus ideas sobre el lenguaje como herramienta del pensamiento y el aprendizaje colaborativo son pilares fundamentales del constructivismo social y la enseñanza mediada.</div>
+          <div class="tags">
+            <span class="tag">Zona de Desarrollo Próximo</span>
+            <span class="tag">Constructivismo social</span>
+            <span class="tag">Aprendizaje colaborativo</span>
+            <span class="tag">Mediación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16. Piaget -->
+    <div class="event era-20c" data-era="era-20c">
+      <div class="event-dot">⬡</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Siglo XX</span>
+          <div class="card-title-block">
+            <div class="figure-name">Jean Piaget (1896-1980)</div>
+            <div class="year-text">Suiza</div>
+          </div>
+          <span class="era-label">Constructivismo cognitivo</span>
+        </div>
+        <div class="card-body">
+          Etapas del desarrollo cognitivo. Asimilación y acomodación. El niño construye su propio conocimiento.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Piaget demostró que los niños construyen activamente su conocimiento a través de la interacción con el entorno, pasando por etapas evolutivas bien definidas: sensoriomotora (0-2), preoperacional (2-7), operaciones concretas (7-11) y operaciones formales (11+). El constructivismo piagetiano establece que el aprendizaje es un proceso activo de asimilación (incorporar nueva info a esquemas existentes) y acomodación (modificar esquemas ante nueva información). Sus ideas son fundamento indiscutible de la pedagogía contemporánea.</div>
+          <div class="tags">
+            <span class="tag">Etapas cognitivas</span>
+            <span class="tag">Constructivismo</span>
+            <span class="tag">Asimilación y acomodación</span>
+            <span class="tag">Desarrollo infantil</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17. Freinet -->
+    <div class="event era-20c" data-era="era-20c">
+      <div class="event-dot">✏</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Siglo XX</span>
+          <div class="card-title-block">
+            <div class="figure-name">Célestin Freinet (1896-1966)</div>
+            <div class="year-text">Francia</div>
+          </div>
+          <span class="era-label">Pedagogía cooperativa y popular</span>
+        </div>
+        <div class="card-body">
+          Texto libre, imprenta escolar, cooperativas. El trabajo productivo como base del aprendizaje genuino.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Freinet desarrolló una pedagogía cooperativa centrada en la vida real y el trabajo creativo. Sus técnicas incluían: el texto libre (escritura sin restricciones), la imprenta escolar (los niños publicaban su periódico), la correspondencia interescolar y el fichero cooperativo. Para Freinet, el conocimiento es la acción, la experiencia y el ejercicio. La educación debía partir de los intereses y vida cotidiana de los niños. Sus métodos fueron pioneros en la educación activa y siguen vigentes en numerosas escuelas de Europa y América Latina.</div>
+          <div class="tags">
+            <span class="tag">Texto libre</span>
+            <span class="tag">Imprenta escolar</span>
+            <span class="tag">Educación popular</span>
+            <span class="tag">Cooperativismo pedagógico</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18. Freire -->
+    <div class="event era-20c" data-era="era-20c">
+      <div class="event-dot">✊</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Siglo XX</span>
+          <div class="card-title-block">
+            <div class="figure-name">Paulo Freire (1921-1997)</div>
+            <div class="year-text">Brasil / América Latina</div>
+          </div>
+          <span class="era-label">Pedagogía crítica y liberadora</span>
+        </div>
+        <div class="card-body">
+          Pedagogía del Oprimido (1968). Educación dialógica. Crítica a la "educación bancaria". Concientización.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Freire es una de las figuras más influyentes de la pedagogía del siglo XX. Su Pedagogía del Oprimido (1968) denunció la "educación bancaria" —que trata al estudiante como depósito pasivo de conocimientos— y propuso una educación dialógica, crítica y liberadora. Para Freire, la educación es un acto de conocimiento y transformación del mundo. El diálogo como método de conocimiento, la concientización (toma de conciencia crítica de la realidad) y la educación popular son sus principales aportes. Influye profundamente en la pedagogía crítica y los movimientos de derechos civiles globales.</div>
+          <div class="tags">
+            <span class="tag">Pedagogía del Oprimido</span>
+            <span class="tag">Educación dialógica</span>
+            <span class="tag">Concientización</span>
+            <span class="tag">Educación popular</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 19. Gardner -->
+    <div class="event era-21c" data-era="era-21c">
+      <div class="event-dot">🧠</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">S. XX-XXI</span>
+          <div class="card-title-block">
+            <div class="figure-name">Howard Gardner (1943-presente)</div>
+            <div class="year-text">Inteligencias Múltiples, 1983</div>
+          </div>
+          <span class="era-label">Diversidad de la inteligencia</span>
+        </div>
+        <div class="card-body">
+          8 tipos de inteligencia. La educación debe valorar y estimular todos los talentos humanos.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Contribución pedagógica</div>
+          <div class="detail-text">Gardner revolucionó la concepción de la inteligencia con su Teoría de las Inteligencias Múltiples (1983). Identificó al menos ocho tipos: lingüística, lógico-matemática, espacial, musical, corporal-kinestésica, naturalista, interpersonal e intrapersonal. Demostró que la inteligencia no es unitaria ni exclusivamente medible por tests. La educación debe atender y estimular esta diversidad. Su teoría fundamenta la educación diferenciada, los estilos de aprendizaje y la valoración de todos los talentos humanos en el aula contemporánea.</div>
+          <div class="tags">
+            <span class="tag">Inteligencias Múltiples</span>
+            <span class="tag">Educación diferenciada</span>
+            <span class="tag">Estilos de aprendizaje</span>
+            <span class="tag">Diversidad cognitiva</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 20. Siglo XXI -->
+    <div class="event era-21c" data-era="era-21c">
+      <div class="event-dot">⬡</div>
+      <div class="event-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <span class="period-badge">Siglo XXI</span>
+          <div class="card-title-block">
+            <div class="figure-name">Pedagogía Contemporánea (2000-hoy)</div>
+            <div class="year-text">Global</div>
+          </div>
+          <span class="era-label">Educación del futuro</span>
+        </div>
+        <div class="card-body">
+          ABP, TIC, neuroeducación, IA educativa, aula invertida, competencias siglo XXI, educación socioemocional.
+        </div>
+        <div class="expand-hint">Clic para más detalles</div>
+        <div class="contribution-detail">
+          <div class="detail-label">Tendencias pedagógicas actuales</div>
+          <div class="detail-text">La pedagogía contemporánea se caracteriza por: Aprendizaje Activo y Participativo, Aprendizaje Basado en Proyectos (ABP), Integración de TIC y IA en el aula, Aula Invertida (Flipped Classroom), Educación Socioemocional, Neuroeducación, Aprendizaje Personalizado, Gamificación, Enfoque por Competencias para el siglo XXI y Aprendizaje a lo largo de toda la vida. El reto central es preparar ciudadanos críticos, creativos y colaborativos para una sociedad compleja, tecnológica, diversa y en permanente cambio.</div>
+          <div class="tags">
+            <span class="tag">ABP</span>
+            <span class="tag">TIC e IA educativa</span>
+            <span class="tag">Neuroeducación</span>
+            <span class="tag">Aula invertida</span>
+            <span class="tag">Competencias siglo XXI</span>
+            <span class="tag">Gamificación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end timeline -->
+
+</div><!-- end container -->
+
+<div class="footer">
+  <p>📚 DED310 – Historia de la Pedagogía y Didáctica | Doctorado en Ciencias de la Educación</p>
+  <p style="margin-top:8px;">University of Technology and Education (UTE) | Recurso Educativo Digital – RED | 2026</p>
+  <p style="margin-top:6px;font-size:11px;color:#3a6d9e;">Elaborado con base en: Tovar, N. (2023), Flórez (2005), Medina y Salvador (2009) y fuentes académicas complementarias</p>
+</div>
+
+<script>
+function toggleCard(card) {
+  const detail = card.querySelector('.contribution-detail');
+  const hint = card.querySelector('.expand-hint');
+  const isExpanded = card.classList.contains('expanded');
+  if (isExpanded) {
+    card.classList.remove('expanded');
+    detail.classList.remove('visible');
+    if (hint) hint.textContent = 'Clic para más detalles';
+  } else {
+    card.classList.add('expanded');
+    detail.classList.add('visible');
+    if (hint) hint.textContent = 'Clic para cerrar';
+  }
+}
+
+function filterEra(era, btn) {
+  // Update buttons
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Filter events
+  document.querySelectorAll('.event').forEach(ev => {
+    if (era === 'all' || ev.dataset.era === era) {
+      ev.style.display = '';
+    } else {
+      ev.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
